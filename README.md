@@ -9,63 +9,86 @@ pinned: false
 short_description: Free PDF tools – merge, split, compress, convert, edit, sign
 ---
 
-# ENG PDF Toolkit — shob PDF tool, ek jaygay, free
+# ENG PDF Toolkit — All Your PDF Tools in One Place
 
-34 ta tool (free to use; hosting-er upload/runtime limits apply): Merge, Split, Remove/Extract pages, Organize, Scan to PDF (phone QR), Compress, Repair, OCR,
-JPG/Word/PowerPoint/Excel/HTML → PDF, PDF → JPG/Word/PowerPoint/Excel/PDF-A/Markdown, Edit, Sign,
-Watermark, Rotate, Page numbers, Crop, PDF Forms, Unlock, Protect, Redact, Compare, AI Summarizer,
-Translate, Workflow. Locally chalale file nijer computer-e process hoy; hosted version-e server-e process hoy. Translate external online translation services use kore.
+34 tools, free to use (hosting upload and runtime limits apply): Merge, Split, Remove/Extract Pages, Organize, Scan to PDF (phone QR), Compress, Repair, OCR, JPG/Word/PowerPoint/Excel/HTML to PDF, PDF to JPG/Word/PowerPoint/Excel/PDF-A/Markdown, Edit, Sign, Watermark, Rotate, Page Numbers, Crop, PDF Forms, Unlock, Protect, Redact, Compare, AI Summarizer, Translate, and Workflow.
 
-## Kivabe chalaben (Run)
-1. **Python 3.10+** install korun (https://python.org — Windows-e "Add Python to PATH" tick din).
-2. Folder-ta unzip korun.
-3. - **Windows:** `run.bat` double-click korun
-   - **Mac / Linux:** terminal-e `bash run.sh`
-4. Browser-e khulun: **http://localhost:5000**
+When run locally, files are processed on your computer. In a hosted deployment, files are processed on the server. Translation uses external online translation services.
 
-Port bodlate: `PORT=8080 python app.py`. Phone theke Scan to PDF-er jonno phone ar PC eki Wi-Fi-te thakte hobe.
+## Run Locally
 
-**Docker:** `docker build -t pdftoolkit . && docker run --rm -p 5000:7860 -e COOKIE_SECURE=0 -v pdfapp-data:/data pdftoolkit` (shob optional program shoho).
+1. Install **Python 3.10+** from https://python.org. On Windows, select **Add Python to PATH**.
+2. Download and extract the project, or clone this repository.
+3. Start the app:
+   - **Windows:** Double-click `run.bat`.
+   - **macOS / Linux:** Run `bash run.sh` in a terminal.
+4. Open **http://localhost:5000** in your browser.
 
-## Optional program (kichu tool-er jonno dorkar)
-| Program | Kon tool | Install |
+To change the port: `PORT=8080 python app.py` (macOS/Linux shell syntax). For phone-based Scan to PDF on a local network, your phone and computer must use the same Wi-Fi network.
+
+### Docker
+
+Build and run the app with the optional conversion programs included:
+
+```bash
+docker build -t pdftoolkit .
+docker run --rm -p 5000:7860 -e COOKIE_SECURE=0 -v pdfapp-data:/data pdftoolkit
+```
+
+Use `COOKIE_SECURE=0` only for local HTTP. Keep secure cookies enabled for hosted HTTPS deployments.
+
+## Optional Programs
+
+Some tools require additional software:
+
+| Program | Used By | Installation |
 |---|---|---|
-| LibreOffice | Word/PowerPoint/Excel → PDF (HTML→PDF fallback) | https://www.libreoffice.org |
-| Ghostscript | PDF/A, aro bhalo Compress/Repair | https://ghostscript.com |
-| Tesseract OCR | OCR PDF, scanned PDF → Word | Windows: UB-Mannheim installer; Mac: `brew install tesseract tesseract-lang`; Linux: `apt install tesseract-ocr tesseract-ocr-ben` |
-| Google Chrome / Chromium | HTML → PDF (best quality) | https://google.com/chrome |
+| LibreOffice | Word/PowerPoint/Excel to PDF; HTML-to-PDF fallback | https://www.libreoffice.org |
+| Ghostscript | PDF/A; enhanced compression and repair | https://ghostscript.com |
+| Tesseract OCR | PDF OCR; scanned PDF to Word | Windows: UB-Mannheim installer; macOS: `brew install tesseract tesseract-lang`; Linux: `apt install tesseract-ocr tesseract-ocr-ben` |
+| Google Chrome / Chromium | HTML to PDF | https://google.com/chrome |
 
-Program install na thakle app chalu hobe, shudhu oi tool-e "install korun" message dekhabe.
-Install korar por app restart korun. Bangla OCR-er jonno Tesseract-er `ben` language pack lagbe.
+The app can start without these programs, but affected tools will display an installation message. Restart the app after installing them. Bengali OCR requires the Tesseract `ben` language pack.
 
 ## Tests
-`python tests/test_all.py` — shob backend tool test kore.
+
+Run `python tests/test_all.py` to exercise the backend tools. Some tests require the optional programs or internet access.
 
 ## Design
-Apple-style clean UI · Liquid Glass · scroll animation · palette: `#8B9A6E` `#F7F2EB` `#EAE2D6` `#EEEEEE`
 
----
-**Made by: Amit Hasan Sami**
+Apple-inspired clean interface, Liquid Glass, scroll animations, and the color palette `#8B9A6E`, `#F7F2EB`, `#EAE2D6`, and `#EEEEEE`.
+
+## Author
+
+**Amit Hasan Sami**
+
 - GitHub: https://github.com/amitsami
 - Facebook: https://www.facebook.com/amithsami110
 - Instagram: https://www.instagram.com/_ahsami1_
 
-## Settings, dark mode & shortcuts
-- Header-er ⚙️ button (ba `,` key) → Settings: Light / Dark / Auto theme, glass blur, liquid background, cursor glow, animation (Full / Calm / Off), auto-hide header, auto-download.
-- 🌙 button ba `Shift + D` → light/dark switch. `Ctrl/⌘ + K` ba `/` → tool search. Page-er jekono jaygay file drop korle matching tool suggest kore.
+## Settings, Dark Mode, and Shortcuts
 
-## Owner dashboard (private)
-- App start korle console-e dashboard link dekhabe, jemon `http://localhost:5055/owner-xxxxxxxx`.
-- Prothom bar chalale password `data/OWNER_ACCESS.txt` file-e lekha thake. Login kore **Settings → Change password** diye bodle nin (tarpor file-ta nije theke muche jay).
-- Nijer password set korte chaile: `OWNER_PASSWORD=amarPassword python app.py`
-- Dashboard-e: online now (live), today/visits/unique/sessions/new vs returning, chart, busiest hours heatmap, world map, country/city/device/OS/browser/model/referrer/language/screen/ISP, page & tool usage, visitor list (IP, location, device) + search, visitor-er full history, CSV export, data clear.
-- Counting: protiti page load server-e record hoy (ad-blocker ateke na), cookie diye unique visitor alada kora hoy, bot alada dekhay, nijer browser-er visit count hoy na.
-- Location IP theke approximate (free ip-api.com / ipwho.is, server-e internet lagbe).
-- Shob data `data/` folder-e (SQLite). Site-e visitor-der jonno privacy notice dekhano hoy — public site-e IP/location rakhar age apnar desher privacy niyom follow korun.
+- Click the header's settings button or press `,` to configure the theme (Light / Dark / Auto), glass blur, liquid background, cursor glow, animations (Full / Calm / Off), automatic header hiding, and automatic downloads.
+- Click the moon button or press `Shift + D` to switch between light and dark modes.
+- Press `Ctrl/Command + K` or `/` to search for a tool.
+- Drop a file anywhere on the page to see suggested tools.
 
-## Azure deployment
+## Private Owner Dashboard
 
-See [Azure deployment guide (Bangla)](AZURE_DEPLOYMENT_BANGLA.md). The Docker deployment defaults to a 50 MB upload limit and one conversion at a time. Set `COOKIE_SECURE=0` only for local HTTP; retain secure cookies for hosted HTTPS. GitHub Pages cannot run this Python/Flask backend.
+- On startup, the console displays the dashboard URL, such as `http://localhost:5000/owner-xxxxxxxx`.
+- On first startup, the generated password is saved in `data/OWNER_ACCESS.txt`. Sign in and use **Settings → Change password** to replace it; the initial access file is then deleted automatically.
+- To supply your own password, set the `OWNER_PASSWORD` environment variable before starting the app. For example, in a macOS/Linux shell: `OWNER_PASSWORD='replace-with-a-strong-password' python app.py`. Never commit credentials to the repository.
+- The dashboard includes live online visitors, daily visits, unique visitors, sessions, new versus returning visitors, charts, an hourly heatmap, a world map, visitor attributes, page and tool usage, searchable visitor lists, individual visit history, CSV export, and data clearing.
+- Page loads are recorded server-side. Cookies distinguish unique visitors; bots are shown separately, and the owner's browser visits are excluded from the visitor count.
+- IP-based locations are approximate and use ip-api.com / ipwho.is; the server needs internet access.
+- Analytics are stored in SQLite under `data/`. A privacy notice is shown to visitors. Follow applicable privacy requirements before collecting IP addresses and location data on a public website.
+
+## Deployment
+
+- [Azure deployment guide](AZURE_DEPLOYMENT.md)
+- [Hugging Face deployment guide](HUGGINGFACE_GUIDE.md)
+
+The Docker deployment defaults to a 50 MB upload limit and one conversion at a time. GitHub Pages cannot run this Python/Flask backend.
 
 ## Licensing
 

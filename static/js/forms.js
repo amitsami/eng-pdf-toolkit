@@ -4,7 +4,7 @@ export const CAPS = { libreoffice: true, ghostscript: true, tesseract: true, chr
 const NEEDS = { libreoffice: "LibreOffice", ghostscript: "Ghostscript", tesseract: "Tesseract OCR" };
 export const missingDep = (t) => (t.needs && !CAPS[t.needs] ? NEEDS[t.needs] : null);
 
-const OCR_NAMES = { eng: "English", ben: "Bengali (বাংলা)", hin: "Hindi", ara: "Arabic", fra: "French", deu: "German", spa: "Spanish", chi_sim: "Chinese (Simplified)", jpn: "Japanese", rus: "Russian", por: "Portuguese", ita: "Italian", urd: "Urdu", tur: "Turkish", kor: "Korean" };
+const OCR_NAMES = { eng: "English", ben: "Bengali", hin: "Hindi", ara: "Arabic", fra: "French", deu: "German", spa: "Spanish", chi_sim: "Chinese (Simplified)", jpn: "Japanese", rus: "Russian", por: "Portuguese", ita: "Italian", urd: "Urdu", tur: "Turkish", kor: "Korean" };
 
 export function renderOptions(schema, state, onChange) {
   const box = h("div", {});

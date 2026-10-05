@@ -32,7 +32,7 @@ dr.text((100, 200), "Scanned invoice number 12345", fill="black", font=fnt)
 dr.text((100, 300), "Total amount due: 999 dollars", fill="black", font=fnt)
 img.save(f"{FIX}/scan.jpg", quality=85); img.convert("RGBA").save(f"{FIX}/scan.png")
 d = pymupdf.open(); p = d.new_page(); p.insert_image(p.rect, filename=f"{FIX}/scan.jpg"); d.save(f"{FIX}/scanned.pdf")
-from docx import Document; doc = Document(); doc.add_heading("Hello Word", 0); doc.add_paragraph("Paragraph text আমার"); doc.save(f"{FIX}/w.docx")
+from docx import Document; doc = Document(); doc.add_heading("Hello Word", 0); doc.add_paragraph("Sample paragraph text"); doc.save(f"{FIX}/w.docx")
 from openpyxl import Workbook; wb = Workbook(); ws = wb.active; ws.append(["a","b"]); ws.append([1,2]); wb.save(f"{FIX}/x.xlsx")
 from pptx import Presentation; pr = Presentation(); s = pr.slides.add_slide(pr.slide_layouts[1]); s.shapes.title.text = "Slide"; pr.save(f"{FIX}/p.pptx")
 open(f"{FIX}/page.html","w").write("<html><body><h1>Hello HTML</h1><p>Test page</p></body></html>")
@@ -106,13 +106,13 @@ check("pdf-to-excel", call("pdf-to-excel", [B]))
 check("pdf-to-pdfa", call("pdf-to-pdfa", [B], {"level":"2b"}), kind="pdf")
 check("pdf-to-markdown", call("pdf-to-markdown", [B]))
 check("page-numbers", call("page-numbers", [A], {"position":"br","format":"Page {n} of {total}","mode":"facing"}), kind="pdf")
-check("watermark text", call("watermark", [A], {"type":"text","text":"CONFIDENTIAL গোপন","rotation":45,"opacity":0.3,"position":"mosaic"}), kind="pdf")
+check("watermark text", call("watermark", [A], {"type":"text","text":"CONFIDENTIAL PRIVATE","rotation":45,"opacity":0.3,"position":"mosaic"}), kind="pdf")
 check("watermark image", call("watermark", [A, f"{FIX}/scan.png"], {"type":"image","opacity":0.5,"rotation":30,"position":"tr"}), kind="pdf")
 check("crop margins", call("crop", [A], {"mode":"margins","top":50,"left":30,"right":30,"bottom":50}), kind="pdf")
 check("crop box", call("crop", [A], {"mode":"box","box":{"x0":0.1,"y0":0.1,"x1":0.9,"y1":0.6},"apply":"all"}), kind="pdf")
 sig = base64.b64encode(open(f"{FIX}/scan.png","rb").read()).decode()
 check("edit", call("edit", [A], {"items":[
-    {"page":0,"type":"text","x":0.1,"y":0.8,"w":0.5,"h":0.05,"text":"Hello আমি","size":14,"color":"#ff0000","bold":True},
+    {"page":0,"type":"text","x":0.1,"y":0.8,"w":0.5,"h":0.05,"text":"Hello from the editor","size":14,"color":"#ff0000","bold":True},
     {"page":2,"type":"rect","x":0.1,"y":0.1,"w":0.2,"h":0.1,"stroke":"#0000ff","fill":"#00ff00","opacity":0.5},
     {"page":0,"type":"ellipse","x":0.5,"y":0.5,"w":0.2,"h":0.1,"stroke":"#0000ff"},
     {"page":0,"type":"arrow","x1":0.1,"y1":0.1,"x2":0.4,"y2":0.3,"stroke":"#000"},
