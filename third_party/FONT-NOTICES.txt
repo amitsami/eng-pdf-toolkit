@@ -1,0 +1,39 @@
+NotoSans-Bold.ttf
+Copyright 2022 The Noto Project Authors (https://github.com/notofonts/latin-greek-cyrillic)
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL
+https://scripts.sil.org/OFL
+
+NotoSans.ttf
+Copyright 2022 The Noto Project Authors (https://github.com/notofonts/latin-greek-cyrillic)
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL
+https://scripts.sil.org/OFL
+
+NotoSansArabic-Bold.ttf
+Copyright 2022 The Noto Project Authors (https://github.com/notofonts/arabic)
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org
+https://openfontlicense.org
+
+NotoSansArabic.ttf
+Copyright 2022 The Noto Project Authors (https://github.com/notofonts/arabic)
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org
+https://openfontlicense.org
+
+NotoSansBengali-Bold.ttf
+Copyright 2025 The Noto Project Authors (https://github.com/notofonts/bengali)
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org
+https://openfontlicense.org/
+
+NotoSansBengali.ttf
+Copyright 2025 The Noto Project Authors (https://github.com/notofonts/bengali)
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org
+https://openfontlicense.org/
+
+NotoSansDevanagari-Bold.ttf
+Copyright 2022 The Noto Project Authors (https://github.com/notofonts/devanagari)
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL
+https://scripts.sil.org/OFL
+
+NotoSansDevanagari.ttf
+Copyright 2022 The Noto Project Authors (https://github.com/notofonts/devanagari)
+This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://scripts.sil.org/OFL
+https://scripts.sil.org/OFL

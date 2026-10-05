@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#F7F2EB">
+<title>ENG PDF Toolkit – Beautifully simple PDF tools, free forever</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='18' fill='%238B9A6E'/><text x='32' y='41' font-family='Arial' font-weight='800' font-size='20' fill='%23F7F2EB' text-anchor='middle'>PDF</text></svg>">
+<script>
+(function(){try{var s=JSON.parse(localStorage.getItem("eng_settings_v1")||"{}");var t=s.theme||"system";if(t==="system")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";var d=document.documentElement;d.dataset.theme=t;d.dataset.motion=s.motion||"full";d.dataset.liquid=s.liquid===false?"off":"on";}catch(e){}})();
+</script>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="12"/><feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 22 -10"/></filter></svg>
+<div id="splash"><div id="splashLogo"></div><div class="splash-name">ENG PDF Toolkit</div><div class="splash-bar"></div></div>
+<div class="bg-liquid" aria-hidden="true"><div class="goo"><i></i><i></i><i></i><i></i><i></i></div><div class="grain"></div></div>
+<header class="top"><div class="top-in">
+  <a class="logo" href="#/" aria-label="ENG PDF Toolkit home"><span id="hdrLogo"></span><span class="wm"><b>ENG <span>PDF</span></b><small>Toolkit</small></span></a>
+  <nav id="topNav">
+    <a href="#/merge">Merge</a><a href="#/split">Split</a><a href="#/compress">Compress</a>
+    <a href="#/?cat=convert">Convert</a><a href="#/?cat=edit">Edit</a><a href="#/?cat=security">Security</a><a href="#/?cat=all">All tools</a>
+  </nav>
+  <div class="spacer"></div>
+  <button class="kbd-hint" id="btnSearch" type="button" title="Search tools (Ctrl K)"></button>
+  <button class="hbtn" id="btnTheme" type="button" title="Light / dark (Shift+D)"></button>
+  <button class="hbtn" id="btnSettings" type="button" title="Settings (,)"></button>
+  <div class="status-dot" id="srvStatus" title="Server status"><i></i><span>Connecting…</span></div>
+</div></header>
+<main id="app"></main>
+<p class="privacy">This site counts visits (IP address, device type and approximate location) only to show anonymous usage statistics to its owner. Your files are never stored.</p>
+<footer class="site glass" id="siteFooter"></footer>
+<script type="module" src="/static/js/app.js"></script>
+</body>
+</html>

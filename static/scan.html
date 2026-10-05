@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scan to PDF</title><link rel="stylesheet" href="/static/style.css">
+<style>.wrap{max-width:480px;margin:0 auto;padding:30px 20px;text-align:center}.big{width:100%;margin:10px 0}#list{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}#list img{width:90px;height:120px;object-fit:cover;border-radius:8px;box-shadow:0 6px 16px rgba(49,54,38,.2);animation:pop .5s}</style></head>
+<body><div class="bg-liquid" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="wrap"><div class="center-box" style="margin:20px auto">
+<div class="logo" style="justify-content:center"><span class="l1">ENG</span><span class="l2">PDF</span><span class="l3">Toolkit</span></div>
+<h2>Scan to PDF</h2>
+<p style="color:var(--muted)">Take photos of your documents. They are sent instantly to your computer.</p>
+<button class="btn-big big" id="cam">Take photo</button>
+<button class="btn big" id="gal">Choose from gallery</button>
+<p id="st" style="font-weight:600"></p><div id="list"></div>
+</div></div>
+<script>
+const sid = location.pathname.split("/").pop();
+const st = document.getElementById("st"), list = document.getElementById("list");
+let count = 0;
+function pick(capture) {
+  const i = document.createElement("input"); i.type = "file"; i.accept = "image/*"; i.multiple = !capture;
+  if (capture) i.setAttribute("capture", "environment");
+  i.onchange = () => upload([...i.files]); i.click();
+}
+async function upload(files) {
+  for (const f of files) {
+    st.textContent = "Sending…";
+    const fd = new FormData(); fd.append("files", f, f.name || "scan.jpg");
+    try {
+      const r = await fetch(`/api/scan/${sid}/upload`, { method: "POST", body: fd });
+      const j = await r.json();
+      if (!r.ok) { st.textContent = (j.error || "Upload failed"); continue; }
+      count++; st.textContent = `${count} page(s) sent – check your computer`;
+      const img = document.createElement("img"); img.src = URL.createObjectURL(f); list.append(img);
+    } catch { st.textContent = "Could not reach your computer. Are both on the same Wi-Fi?"; }
+  }
+}
+document.getElementById("cam").onclick = () => pick(true);
+document.getElementById("gal").onclick = () => pick(false);
+</script></body></html>
